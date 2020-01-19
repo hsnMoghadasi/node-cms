@@ -1,2 +1,7 @@
+## installation
+
 npm install
-node server/server
+## run
+cd server
+<br />
+node server.js
