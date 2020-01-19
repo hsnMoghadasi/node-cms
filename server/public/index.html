@@ -1,0 +1,58 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>home</title>
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/bootstrap-rtl.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+
+        
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+                var settings = {
+                    async: true,
+                    crossDomain: true,
+                    url: "http://localhost:3000/api/getAllPost",
+                    method: "POST",
+                };
+
+                $.ajax(settings).done(function (response) {
+
+                    for (var i = 0; i < response.length; i++) {
+                        var element = "<li><h4 id='title-post'>"+ response[i].title+"</h4><div id='context-post'>"+response[i].context+"</div></li>";
+                        $("#post-list").append(element);
+                    }
+                })
+            });
+        </script>
+        <header class="header-home-page">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap" style="justify-content: flex-end;">
+                        <a href="context">
+                            <h4 id="user-name">ورود به پنل</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="col-sm-6">
+                    <div class="header-post">
+                        <h4>پست ها</h4>
+                    </div>
+                    <ul id="post-list">
+    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
